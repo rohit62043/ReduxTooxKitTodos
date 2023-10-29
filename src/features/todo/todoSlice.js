@@ -7,7 +7,7 @@ const initialState = {
     todos: [{ id: 1, text: "Hello world" }]
 }
 
-//Let us make Slice(bigger version of reducer(functionality))
+//Let us make Slice(bigger version of reducer(functionality)) we need 3 things--name,initialState,reducers
 
 export const todoSlice = createSlice({
     name: "todo",
@@ -22,7 +22,7 @@ export const todoSlice = createSlice({
         addTodo: (state, action) => {
             const todo = {
                 id: nanoid(),
-                text: action.payload.text
+                text: action.payload
             }
 
             //Now add this todo to the state
@@ -30,7 +30,7 @@ export const todoSlice = createSlice({
             state.todos.push(todo);
         },
         removeTodo: (state, action) => {
-            state.todos = state.todos.filter((todo) => todo.id !== action.payload.id)
+            state.todos = state.todos.filter((todo) => todo.id !== action.payload)
         },
 
         //UpdateTodo
